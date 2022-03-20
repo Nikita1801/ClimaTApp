@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CityNS" representedClassName=".CityNS" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <relationship name="coords" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CoordNS" inverseName="city" inverseEntity="CoordNS"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WeatherNS" inverseName="city" inverseEntity="WeatherNS"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CoordNS" representedClassName=".CoordNS" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CityNS" inverseName="coords" inverseEntity="CityNS"/>
+    </entity>
+    <entity name="WeatherNS" representedClassName=".WeatherNS" syncable="YES">
+        <attribute name="cityName" optional="YES" attributeType="String"/>
+        <attribute name="condition" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="deg" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pressure" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="speed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="weatherDescription" optional="YES" attributeType="String"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CityNS" inverseName="weather" inverseEntity="CityNS"/>
+    </entity>
+    <elements>
+        <element name="CityNS" positionX="-256.5" positionY="-74.5" width="128" height="119"/>
+        <element name="CoordNS" positionX="-43" positionY="36" width="128" height="74"/>
+        <element name="WeatherNS" positionX="-147" positionY="183.5" width="128" height="164"/>
+    </elements>
+</model>
